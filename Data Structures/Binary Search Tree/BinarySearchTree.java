@@ -4,7 +4,7 @@ class Node {
     private Node leftChild;
     private Node rightChild;
 
-    Node(int value) {
+    Node(final int value) {
         this.value = value;
         this.leftChild = null;
         this.rightChild = null;
@@ -14,7 +14,7 @@ class Node {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(final int value) {
         this.value = value;
     }
 
@@ -22,7 +22,7 @@ class Node {
         return leftChild;
     }
 
-    public void setLeftChild(Node leftChild) {
+    public void setLeftChild(final Node leftChild) {
         this.leftChild = leftChild;
     }
 
@@ -30,7 +30,7 @@ class Node {
         return rightChild;
     }
 
-    public void setRightChild(Node rightChild) {
+    public void setRightChild(final Node rightChild) {
         this.rightChild = rightChild;
     }
 
@@ -40,7 +40,7 @@ class BinarySearchTree {
 
     private Node root;
 
-    public void insert(int value) {
+    public void insert(final int value) {
         if (root == null) {
             this.root = new Node(value);
         } else {
@@ -48,7 +48,7 @@ class BinarySearchTree {
         }
     }
 
-    private void insertNode(int value, Node node) {
+    private void insertNode(final int value, final Node node) {
         if (node.getValue() > value) {
             // node is gonna be the left child
             if (node.getLeftChild() != null) {
@@ -71,7 +71,7 @@ class BinarySearchTree {
 
         this.inOrderTraversal(this.root);
         System.out.println();
-        
+
         this.preOrderTraversal(this.root);
         System.out.println();
 
@@ -79,7 +79,7 @@ class BinarySearchTree {
         System.out.println();
     }
 
-    private void inOrderTraversal(Node node) {
+    private void inOrderTraversal(final Node node) {
         if (node.getLeftChild() != null) {
             inOrderTraversal(node.getLeftChild());
         }
@@ -91,7 +91,7 @@ class BinarySearchTree {
         }
     }
 
-    private void preOrderTraversal(Node node) {
+    private void preOrderTraversal(final Node node) {
         System.out.print(node.getValue() + " -> ");
 
         if (node.getLeftChild() != null) {
@@ -103,7 +103,7 @@ class BinarySearchTree {
         }
     }
 
-    private void postOrderTraversal(Node node) {
+    private void postOrderTraversal(final Node node) {
         if (node.getLeftChild() != null) {
             postOrderTraversal(node.getLeftChild());
         }
@@ -132,7 +132,7 @@ class BinarySearchTree {
         return getMax(this.root);
     }
 
-    private int getMin(Node node) {
+    private int getMin(final Node node) {
         if (node.getLeftChild() != null) {
             return getMin(node.getLeftChild());
         }
@@ -140,7 +140,7 @@ class BinarySearchTree {
         return node.getValue();
     }
 
-    private int getMax(Node node) {
+    private int getMax(final Node node) {
         if (node.getRightChild() != null) {
             return getMax(node.getRightChild());
         }
@@ -148,13 +148,13 @@ class BinarySearchTree {
         return node.getValue();
     }
 
-    public void delete(int value) {
+    public void delete(final int value) {
         if (this.root != null) {
             this.root = deleteNode(value, root);
         }
     }
 
-    private Node deleteNode(int value, Node node) {
+    private Node deleteNode(final int value, final Node node) {
 
         if (node == null) {
             return node;
@@ -162,7 +162,7 @@ class BinarySearchTree {
 
         if (node.getValue() > value) {
             node.setLeftChild(deleteNode(value, node.getLeftChild()));
-        } else if (node.getValue() < value){
+        } else if (node.getValue() < value) {
             node.setRightChild(deleteNode(value, node.getRightChild()));
         } else {
             // we found the node
@@ -174,20 +174,20 @@ class BinarySearchTree {
             // if the given node has a single left or right child
             if (node.getLeftChild() == null) {
                 System.out.println("Removing the right child!!");
-                Node returnNode = node.getRightChild();
+                final Node returnNode = node.getRightChild();
                 node.setLeftChild(null);
                 return returnNode;
             } else if (node.getRightChild() == null) {
                 System.out.println("Removing the left child!");
-                Node returnNode = node.getLeftChild();
+                final Node returnNode = node.getLeftChild();
                 node.getRightChild();
                 return returnNode;
             }
 
             // the node has both the left child and the right child
             System.out.println("Removing the node with both the left child and the right child!");
-            Node tempNode = this.getPredecessorNode(node.getLeftChild());
-            
+            final Node tempNode = this.getPredecessorNode(node.getLeftChild());
+
             // swap the two nodes
             node.setValue(tempNode.getValue());
             node.setLeftChild(deleteNode(value, node.getLeftChild()));
@@ -197,7 +197,7 @@ class BinarySearchTree {
 
     }
 
-    private Node getPredecessorNode(Node node) {
+    private Node getPredecessorNode(final Node node) {
         if (node.getRightChild() != null) {
             getPredecessorNode(node.getRightChild());
         }
@@ -205,8 +205,8 @@ class BinarySearchTree {
         return node;
     }
 
-    public static void main(String[] args) {
-        BinarySearchTree bst = new BinarySearchTree();
+    public static void main(final String[] args) {
+        final BinarySearchTree bst = new BinarySearchTree();
         bst.insert(30);
         bst.insert(20);
         bst.insert(10);
