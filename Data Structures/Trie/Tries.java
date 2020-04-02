@@ -155,7 +155,12 @@ class Tries {
         for (int i=0; i<prefix.length(); i++) {
             char c = prefix.charAt(i);
             int asciiChildredIndexValue = c - 'a';
-            tempNode = tempNode.getChild(asciiChildredIndexValue);
+
+            if (tempNode.getChild(asciiChildredIndexValue) != null) {
+                tempNode = tempNode.getChild(asciiChildredIndexValue);
+            } else {
+                return allwords;
+            }
         }
 
         collect(tempNode, prefix, allwords);
@@ -189,45 +194,53 @@ class Tries {
 
     public static void main(String[] args) {
         Tries trie = new Tries();
-        trie.insert("joe", 1);
-        trie.insert("john", 2);
-        trie.insert("johna", 3);
-        trie.insert("jana", 3);
-        trie.insert("jane", 3);
-        trie.insert("jade", 3);
-        // trie.insert("helloworld", 4);
-        // trie.insert("adam", 4);
-        // trie.insert("badass", 4);
-
-        System.out.println(trie.search("joe"));
-        System.out.println(trie.search("joee"));
-        System.out.println(trie.search("jon"));
-
-        System.out.println(trie.searchAsMap("joe"));
-        System.out.println(trie.searchAsMap("johna"));
-
-        System.out.println();
-        List<String> list = trie.allWordsWithPrefix("jo");
+        trie.insert("havana", 1);
+        List<String> list = trie.allWordsWithPrefix("tatiana");
         System.out.println(list);
+        // trie.insert("john", 2);
+        // trie.insert("johna", 3);
+        // trie.insert("jana", 3);
+        // trie.insert("jane", 3);
+        // trie.insert("jade", 3);
+        // // trie.insert("helloworld", 4);
+        // // trie.insert("adam", 4);
+        // // trie.insert("badass", 4);
 
-        System.out.println();
-        List<String> list2 = trie.allWordsWithPrefix("jo");
-        System.out.println(list2);
+        // System.out.println(trie.search("joe"));
+        // System.out.println(trie.search("joee"));
+        // System.out.println(trie.search("jon"));
 
-        System.out.println();
-        List<String> list3 = trie.allWordsWithPrefix("j");
-        System.out.println(list3);
+        // System.out.println(trie.searchAsMap("joe"));
+        // System.out.println(trie.searchAsMap("johna"));
 
-        System.out.println();
-        List<String> list4 = trie.allWordsWithPrefix("ja");
-        System.out.println(list4);
+        // System.out.println();
+        // List<String> list = trie.allWordsWithPrefix("jo");
+        // System.out.println(list);
 
-        // the following is used for sorting as well
-        System.out.println();
-        List<String> list5 = trie.allWordsWithPrefix("");
-        System.out.println(list5);
+        // System.out.println();
+        // List<String> list2 = trie.allWordsWithPrefix("jo");
+        // System.out.println(list2);
 
-        System.out.println();
-        System.out.println(trie.longestCommonPrefix());
+        // System.out.println();
+        // List<String> list15 = trie.allWordsWithPrefix("x");
+        // System.out.println(list15);
+
+        // System.out.println();
+        // List<String> list3 = trie.allWordsWithPrefix("j");
+        // System.out.println(list3);
+
+        // System.out.println();
+        // List<String> list4 = trie.allWordsWithPrefix("ja");
+        // System.out.println(list4);
+
+        // // the following is used for sorting as well
+        // System.out.println();
+        // List<String> list5 = trie.allWordsWithPrefix("");
+        // System.out.println(list5);
+
+        // System.out.println();
+        // System.out.println(trie.longestCommonPrefix());
+
+
     }
 }
