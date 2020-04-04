@@ -82,6 +82,6 @@ class KnightTour {
     public static void main(String[] args) {
         
         KnightTour kt = new KnightTour();
-        kt.solveKnightTourProblem();;
+        kt.solveKnightTourProblem();
     }
 }
