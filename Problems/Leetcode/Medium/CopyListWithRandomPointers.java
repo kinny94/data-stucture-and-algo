@@ -16,7 +16,7 @@ class Node {
 class CopyListWithRandomPointer {
     
     public Node copyRandomList(Node head) {
-       if (head == null) return null;
+      if (head == null) return null;
   
       Map<Node, Node> map = new HashMap<Node, Node>();
 
