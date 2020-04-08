@@ -1,4 +1,4 @@
-class NumbnerOfIsland {
+class NumberOfIsland {
     
     private int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
     private static int row;

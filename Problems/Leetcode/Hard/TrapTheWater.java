@@ -24,7 +24,7 @@ class TrapTheWater {
         }
 
         // use two pointers to scan the entire array until they meet with each other
-        // Key points: any bars in the middle of leftMax bar and rightMax bar will not influence
+        // Key points: any bars in th   e middle of leftMax bar and rightMax bar will not influence
         // how much water can current position trap
         for (int left = 0, right = height.length - 1; left <= right;) {
             leftMax = Math.max(leftMax, height[left]);
