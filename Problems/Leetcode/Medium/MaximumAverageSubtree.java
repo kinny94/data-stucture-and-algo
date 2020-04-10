@@ -8,6 +8,10 @@
  * }
  */
 
+
+ /*
+    you can also do it by first calculating the sun and num in a different function and then calling the maximum avgsubtree function recurrsively on left and right node but that'll be O(N^2)
+ */
 class NumSum {
     int num;
     Double sum;
