@@ -9,4 +9,4 @@ class BuyAndSellStock {
         
         return max;
     }
-}
+} 
