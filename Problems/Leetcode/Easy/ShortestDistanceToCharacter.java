@@ -1,3 +1,9 @@
+/*
+    Initial result array.
+    Loop twice on the string S.
+    First forward pass to find shortest distant to character on left.
+    Second backward pass to find shortest distant to character on right.
+*/
 class ShortestDistanceToCharacter {
     public int[] shortestToChar(String S, char C) {
         int pos = -S.length();

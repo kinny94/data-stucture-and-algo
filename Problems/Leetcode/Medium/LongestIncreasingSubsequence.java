@@ -1,3 +1,8 @@
+/*
+
+The idea is that as you iterate the sequence, you keep track of the minimum value a subsequence of given length might end with, for all so far possible subsequence lengths. So dp[i] is the minimum value a subsequence of length i+1 might end with. Having this info, for each new number we iterate to, we can determine the longest subsequence where it can be appended using binary search. The final answer is the length of the longest subsequence we found so far.
+
+*/
 public class LongestIncreasingSubsequence {
     public int lengthOfLIS(int[] nums) {
         if (nums == null || nums.length == 0) {
