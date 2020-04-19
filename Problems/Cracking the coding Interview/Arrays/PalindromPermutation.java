@@ -1,41 +1,22 @@
 class PalindromPermutation {
 
-    private int getCharacterNumber(Character c) {
-        int a = Character.getNumericValue('a');
-        int z = Character.getNumericValue('z');
-        int val = Character.getNumericValue(c);
-        if (a <= val && val <= z) {
-            return val - a;
+    public boolean isPermutationOfPalindrome(String s) {
+        if (s.length() <= 1) {
+            return true;
         }
-
-        return -1;
-    }
-
-    private int[] buildCharacterFrequencyTable(String phrase) {
-        int[] table = new int[Character.getNumericValue('z') - Character.getNumericValue('a') - 1];
-
-        for (char c: phrase.toCharArray()) {
-            int x = getCharacterNumber(c);
-            if (x != -1) {
-                table[x]++;
-            }
+        int[] counts = new int[128];
+        for (char c : s.toCharArray()) {
+            counts[c]++;
         }
-
-        return table;
-    }
-
-    public boolean isPermutationOfPalindrome(String phrase) {
-        int[] table = buildCharacterFrequencyTable(phrase);
-        boolean foundOdd = false;
-        for (int count: table) {
+        int oddNum = 0;
+        for (int count : counts) {
             if (count % 2 == 1) {
-                if (foundOdd) {
-                    return false;
-                }
-                foundOdd = true;
+                oddNum++;
+            }
+            if (oddNum > 1) {
+                return false;
             }
         }
-
         return true;
     }
 
