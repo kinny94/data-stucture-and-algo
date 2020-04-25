@@ -7,7 +7,7 @@ class PrintNodeThatDontHaveSiblings {
 
         List<TreeNode> nodes = new ArrayList<>();
 
-        if (rot == null) {
+        if (root == null) {
             return null;
         }
 
