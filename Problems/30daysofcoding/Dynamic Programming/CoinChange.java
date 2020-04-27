@@ -15,6 +15,13 @@ class CoinChange {
             }
         }
 
+        System.out.println(Arrays.toString(dp));
         return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
+    }
+
+    public static void main(String[] args) {
+        CoinChange cc = new CoinChange();
+        int[] a = {1, 2, 5};
+        cc.coinChange(a, 11);
     }
 }
