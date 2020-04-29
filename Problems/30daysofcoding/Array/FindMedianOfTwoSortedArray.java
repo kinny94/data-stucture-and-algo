@@ -44,6 +44,6 @@ class FindMedianOfTwoSortedArray {
         int b[] = {3, 4, 13, 17, 18};
 
         FindMedianOfTwoSortedArray obj = new FindMedianOfTwoSortedArray();
-        System.out.println(obj.findMedianSortedArrays(a, b, 0, a.length-1, 0, b.length-1));
+        System.out.println(obj.findMedianSortedArrays(a, b));
     }
 }
