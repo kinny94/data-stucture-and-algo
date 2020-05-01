@@ -1,4 +1,4 @@
-class FirstMissingNumber {
+  class FirstMissingNumber {
     public int firstMissingNumber(int nums[]) {
 
         boolean containsOne = false;
