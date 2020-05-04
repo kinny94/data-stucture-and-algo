@@ -19,6 +19,7 @@ class LongestPalindromicSubstring {
     public boolean isPalindrome(String s, int begin, int end) {
         if (begin < 0) {
             return false;
+             
         }
 
         while(begin < end) {
