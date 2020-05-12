@@ -3,7 +3,7 @@ import java.util.PriorityQueue;
 class MergeKSortedList {
     public ListNode mergeKLists(ListNode[] lists) {
 
-        if (list == null || lists.length == 0) {
+        if (lists == null || lists.length == 0) {
             return null;
         }
 
