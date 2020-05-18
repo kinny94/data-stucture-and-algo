@@ -40,28 +40,34 @@ class Node {
 
 class FindKthMaximumValueInBST {
 
-    public int findKthMax(Node root, int k) {
-        StringBuilder result = new StringBuilder();
-        result = inOrder(root, result);
+    static int counter;
 
-        String[] array = result.toString().split(",");
-        if ((array.length - k) >= 0 ) {
-            return Integer.parseInt(array[array.length - k]);
+    public static int findKthMax(Node root, int k) {
+        counter = 0;
+        Node node = findKthMiaximum(root, k);
+        if (node != null) {
+            return node.getData();
         }
+
         return -1;
     }
 
-    public StringBuilder inOrder(Node root, StringBuilder result) {
-        if (root.getLeftChild() != null) {
-            inOrder(root.getLeftChild(), result);
+    public static Node findKthMiaximum(Node node, int k) {
+        if (node == null) {
+            return null;
         }
 
-        result.append(root.getData() + ",");
-        
-        if (root.getRightChild() != null) {
-            inOrder(root.getRightChild(), result);
+        Node newNode = findKthMiaximum(node.getRightChild(), k);
+
+        if (counter != k) {
+            counter++;
+            newNode = node;
         }
 
-        return result;
-    } 
+        if (counter == k) {
+            return node;
+        } else {
+            return findKthMiaximum(node.getLeftChild(), k);
+        }
+    }
 }
