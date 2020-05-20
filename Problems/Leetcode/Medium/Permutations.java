@@ -1,22 +1,29 @@
-class Permutations {
-    
-    public List<List<Integer>> permute(int[] nums) {
-       List<List<Integer>> list = new ArrayList<>();
-       // Arrays.sort(nums); // not necessary
-       backtrack(list, new ArrayList<>(), nums);
-       return list;
-    }
+import java.util.ArrayList;
 
-    private void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] nums){
-       if(tempList.size() == nums.length){
-          list.add(new ArrayList<>(tempList));
-       } else{
-          for(int i = 0; i < nums.length; i++){ 
-             if(tempList.contains(nums[i])) continue; // element already exists, skip
-             tempList.add(nums[i]);
-             backtrack(list, tempList, nums);
-             tempList.remove(tempList.size() - 1);
-          }
-       }
-    } 
+class Permutations {
+   public List<List<Integer>> permute(int[] nums) {
+      List<List<Integer>> results = new ArrayList<>();
+
+      if (nums == null || nums.length == 0) {
+         return results;
+      }
+
+      createPermutations(results, new ArrayList<Integer>(), nums);
+      return results;
+   }
+
+   private void createPermutations(List<List<Integer>> results, List<Integer> current, int[] nums) {
+      if (currentList.size() == nums.length) {
+         results.add(currentList);
+         return;
+      }
+
+      for (int i=0; i<nums.length; i++) {
+         if (!currentList.contains(nums[i])) {
+            currentList.add(nums[i]);
+            createPermutations(results, current, nums);
+            currentList.remove(currentList.size() - 1);
+         }
+      }
+   }
 }
