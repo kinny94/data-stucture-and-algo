@@ -10,16 +10,20 @@
 class ValidateBST {
     
     public boolean isValidBST(TreeNode root) {
-        return isBSTHelper(root, Long.MIN_VALUE, Long.MAX_VALUE);
-    }
-    
-     private boolean isBSTHelper(TreeNode node, long lower_limit, long upper_limit) {
-        if (node == null) {
+        if (root == null) {
             return true;
         }
-        if (node.val <= lower_limit || upper_limit <= node.val) {
+
+        return helper(root, null, null);
+    }
+
+    private boolean helper(TreeNode node, Integer max, Integer min) {
+        if (node == null) {
+            return true;
+        } else if (max != null && node.val >= max || min !- null && node.val <= min) {
             return false;
+        } else {
+            return helper(node.left, node.val, min) && helper(node.right, max, node.val);
         }
-        return isBSTHelper(node.left, lower_limit, node.val) && isBSTHelper(node.right, node.val, upper_limit);
     }
 }
