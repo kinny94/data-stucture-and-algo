@@ -1,10 +1,24 @@
 public class MaximumSubarray {
-    public static int maxSubArray(int[] A) {
-        int maxSoFar=A[0], maxEndingHere=A[0];
-        for (int i=1;i<A.length;++i){
-            maxEndingHere= Math.max(maxEndingHere+A[i],A[i]);
-            maxSoFar=Math.max(maxSoFar, maxEndingHere);	
+    public int maxSubArray(int[] A) {
+        if (A.length < 1) {
+            return 0;
         }
-        return maxSoFar;
+
+        int currentMax = A[0];
+        int globalMax = A[0];   
+
+        for (int i=1; i<A.length; i++) {
+            if (currentMax < 0) {
+                currentMax = A[i];
+            } else {
+                currentMax += A[i];
+            }
+
+            if (globalMax < currentMax) {
+                globalMax = currentMax;
+            }
+        }
+
+        return globalMax;
     }
 }
