@@ -8,19 +8,17 @@ import java.util.Set;
 */
 
 class TwoSum {
-    class Solution {
-        public int[] twoSum(int[] nums, int target) {
-            Map<Integer, Integer> map = new HashMap<>();
-    
-            for (int i=0; i<nums.length; i++) {
-                if (map.containsKey(target - nums[i])) {
-                    return new int[]{i, map.get(target - nums[i])};
-                } else {
-                    map.put(nums[i], i);
-                }
+    public int[] twoSum(int[] nums, int target) {
+        Set<Integer> set = new HashSet<>();
+
+        for (int i: nums) {
+            if (set.contains(target - i)) {
+                return new int[]{i, target - i};
+            } else {
+                set.add(i);
             }
-                    
-            return new int[]{};
-        }    
-    } 
+        }
+
+        return new int[]{};
+    }    
 }
