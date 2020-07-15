@@ -11,6 +11,8 @@ class LongestSubStringWithKDistinctCharacters {
 
         int windowStart = 0;
         int maxLength = 0;
+        int count = 0;
+
         Map<Character, Integer> map = new HashMap<>();
         
         for (int i=0; i<s.length(); i++) {
@@ -26,10 +28,11 @@ class LongestSubStringWithKDistinctCharacters {
 
                 windowStart++;
             }
-
+            count++;
             maxLength = Math.max(maxLength, i - windowStart + 1);
         }
 
+        System.out.println(count);
         return maxLength;
     }
 
@@ -38,5 +41,6 @@ class LongestSubStringWithKDistinctCharacters {
         System.out.println(obj.findLongestSubString("arraci", 2));
         System.out.println("Length of the longest substring: " + obj.findLongestSubString("araaci", 1));
         System.out.println("Length of the longest substring: " + obj.findLongestSubString("cbbebi", 3));
+        System.out.println("Length of the longest substring: " + obj.findLongestSubString("aabeefegeeccrr", 3));
     }
 }
