@@ -45,5 +45,7 @@ class WordsConcatenations {
         System.out.println(result);
         result = obj.findIndices("catcatfoxfox", new String[] { "cat", "fox" });
         System.out.println(result);
+        result = obj.findIndices("wordgoodgoodgoodbestword", new String[] { "word","good","best","good" });
+        System.out.println(result);
     }
 }
