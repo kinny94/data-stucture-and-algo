@@ -62,11 +62,11 @@ class InsertIntervals {
         System.out.println();
 
         input = new ArrayList<Interval>();
-        input.add(new Interval(2, 3));
-        input.add(new Interval(5, 7));
+        input.add(new Interval(1, 3));
+        input.add(new Interval(6, 9));
         System.out.print("Intervals after inserting the new interval: ");
-        for (Interval interval : InsertIntervals.insert(input, new Interval(1, 4)))
-        System.out.print("[" + interval.start + "," + interval.end + "] ");
+        for (Interval interval : InsertIntervals.insert(input, new Interval(2, 5)))
+            System.out.print("[" + interval.start + "," + interval.end + "] ");
         System.out.println();
     }
 }
