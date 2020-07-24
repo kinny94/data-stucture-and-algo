@@ -39,11 +39,40 @@ class BalanceParenthesis {
         return result;
     }
 
+
+    // backtracking method
+    public static List<String> generateParenthesis(int n) {
+        
+        List<String> results = new ArrayList<>();
+        
+        if (n == 0) {
+            return results;
+        }
+
+        generate(results, "", 0, 0, n);
+        return results;
+    }   
+
+    private static void generate(List<String> results, String currentString, int open, int close, int m) {
+        if (currentString.length() == m * 2) {
+            results.add(currentString);
+            return;
+        }
+
+        if (open < m) {
+            generate(results, currentString + "(", open + 1, close, m);
+        }
+
+        if (close < open) {
+            generate(results, currentString + ")", open, close + 1, m);
+        }
+    }
+    
     public static void main(String[] args) {
         List<String> result = BalanceParenthesis.generateValidParentheses(2);
         System.out.println("All combinations of balanced parentheses are: " + result);
     
-        result = BalanceParenthesis.generateValidParentheses(3);
+        result = BalanceParenthesis.generateParenthesis(3);
         System.out.println("All combinations of balanced parentheses are: " + result);
     }
 }
