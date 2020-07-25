@@ -16,7 +16,7 @@ class SearchInARotatedArray {
                     start = mid + 1;
                 }
             } else {
-                if (key > arr[mid] && key <= arr[mid]) {
+                if (key > arr[mid] && key <= arr[end]) {
                     start = mid + 1;
                 } else {
                     end = mid - 1;
