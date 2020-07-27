@@ -1,5 +1,5 @@
 class TargetSum {
-    // recurrsive
+    // recurrsive - DFS
     public int findTargetSumWays(int[] nums, int S) {
         return findWays(nums, 0, S);
     }
