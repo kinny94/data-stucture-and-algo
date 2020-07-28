@@ -15,6 +15,24 @@ class MinimumJumpsToReachTheEnd {
         return jumps;
     }    
 
+
+    // can reach the end
+    public boolean canJump(int[] nums) {
+        int maxWindow = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(i == nums.length - 1){
+                return true;
+            }
+            
+            maxWindow = Math.max(maxWindow, i + nums[i]);
+            
+            if(i >= maxWindow){
+                return false;
+            }
+        }
+        return maxWindow >= nums.length - 1;
+    }
+
     public static void main(String[] args) {
         MinimumJumpsToReachTheEnd aj = new MinimumJumpsToReachTheEnd();
         int[] jumps = {2, 1, 1, 1, 4};
