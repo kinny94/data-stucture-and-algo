@@ -24,10 +24,38 @@ class MinDeletionInsertionRequiredForSameStrings {
         
         return maxLength;
     }   
+
+    public int onlyDeletionRequired(String word1, String word2) {
+        
+        if (word1.equals("") && word2.equals("")) {
+            return 0;
+        }
+        
+        if (word1.equals("") || word2.equals("")) {
+            return 1;
+        }
+        
+        int[][] dp = new int[word1.length() + 1][word2.length() + 1];
+        int maxLength = 0;
+        
+        for (int i=1; i<=word1.length(); i++) {
+            for (int j=1; j<=word2.length(); j++) {
+                if (word1.charAt(i-1) == word2.charAt(j-1)) {
+                    dp[i][j] = 1 + dp[i-1][j-1];
+                } else{
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+                }
+                
+                maxLength = Math.max(dp[i][j], maxLength);
+            }
+        }
+        
+        return word1.length() + word2.length() - 2 * maxLength;
+    }
     
     public static void main(String[] args) {
         MinDeletionInsertionRequiredForSameStrings mdi = new MinDeletionInsertionRequiredForSameStrings();
-        mdi.findMDI("abc", "fbc");
+        mdi.findMDI("sea", "eat");
         mdi.findMDI("abdca", "cbda");
         mdi.findMDI("passport", "ppsspt");
     }
