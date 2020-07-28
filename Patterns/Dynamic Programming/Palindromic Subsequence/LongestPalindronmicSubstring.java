@@ -44,6 +44,7 @@ class LongestPalindronmicSubstring {
             dp[i][i] = true;
         }
 
+        String res = null;
         int maxLength = 1;
         for (int start = st.length() - 1; start >= 0; start--) {
             for (int end = start + 1; end < st.length(); end++) {
@@ -53,9 +54,14 @@ class LongestPalindronmicSubstring {
                         maxLength = Math.max(maxLength, end - start + 1);
                     }
                 }
+
+                if (dp[start][end] && (res == null || end - start + 1 > res.length())) {
+                    res = st.substring(start, end + 1);
+                }
             }
         } 
 
+        System.out.println(res);
         return maxLength;
     }    
 
