@@ -5,9 +5,7 @@ class LongestSubStringWithKDistinctCharacters {
     
     public int findLongestSubString(String s, int k) {
 
-        if (s == null || s.length() == 0 || s.length() < k) {
-            return 0;
-        }
+        if (s.length()*k == 0) return 0;
 
         int windowStart = 0;
         int maxLength = 0;

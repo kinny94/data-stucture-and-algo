@@ -4,22 +4,20 @@ import java.util.Map;
 class LongestSubstringWithKDistinctCharacters {
     public int findLongestSubString(String s, int k) {
 
-        if (s == null || s.length() == 0 || s.length() < k) {
-            return 0;
-        }
+        if (s.length()*k == 0) return 0;
+
 
         int windowStart = 0;
         int maxLength = 0;
-        int count = 0;
 
         Map<Character, Integer> map = new HashMap<>();
-
+        
         for (int i=0; i<s.length(); i++) {
             char rightChar = s.charAt(i);
             map.put(rightChar, map.getOrDefault(rightChar, 0) + 1);
 
             while(map.size() > k) {
-                char leftChar = s.charAt(i);
+                char leftChar = s.charAt(windowStart);
                 map.put(leftChar, map.get(leftChar) - 1);
                 if (map.get(leftChar) == 0) {
                     map.remove(leftChar);
@@ -27,8 +25,6 @@ class LongestSubstringWithKDistinctCharacters {
 
                 windowStart++;
             }
-
-            count++;
             maxLength = Math.max(maxLength, i - windowStart + 1);
         }
 
