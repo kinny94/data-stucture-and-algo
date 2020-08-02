@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 class HappyNumber {
     public static boolean find(int num) {
         int slow = num;
@@ -22,6 +25,28 @@ class HappyNumber {
         }
 
         return sum;
+    }
+
+    public boolean isHappy(int n) {
+        Set<Integer> set = new HashSet()<>();
+        while (n > 1) {
+            int m = 0;
+            
+            while (n > 0) {
+                int d = n % 10;
+                m += d * d;
+                n /= 10;
+            }
+            
+            if (set.contains(m)) {
+                return false;
+            }
+            
+            set.add(m);
+            n = m;
+        }
+        
+        return true;
     }
 
     public static void main(String[] args) {
