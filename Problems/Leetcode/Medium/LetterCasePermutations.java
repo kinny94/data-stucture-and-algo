@@ -1,4 +1,4 @@
-class Solution {
+class LetterCasePermutation {
     public List<String> letterCasePermutation(String str) {
         List<String> permutations = new ArrayList<>();
         if (str == null) {
