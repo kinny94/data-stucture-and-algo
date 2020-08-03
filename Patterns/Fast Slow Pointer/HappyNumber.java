@@ -28,7 +28,7 @@ class HappyNumber {
     }
 
     public boolean isHappy(int n) {
-        Set<Integer> set = new HashSet()<>();
+        Set<Integer> set = new HashSet<>();
         while (n > 1) {
             int m = 0;
             
