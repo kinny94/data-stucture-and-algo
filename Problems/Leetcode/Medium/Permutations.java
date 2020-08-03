@@ -1,29 +1,26 @@
-import java.util.ArrayList;
-
 class Permutations {
+    
    public List<List<Integer>> permute(int[] nums) {
-      List<List<Integer>> results = new ArrayList<>();
+       List<List<Integer>> result = new ArrayList<>();
+       Queue<List<Integer>> permutations = new LinkedList<>();
+       permutations.add(new ArrayList<>());
+       
+       for (int currentNumber: nums) {
+           int n = permutations.size();
+           for (int i=0; i<n; i++) {
+               List<Integer> oldPermutations = permutations.poll();
+               for (int j=0; j<=oldPermutations.size(); j++) {
+                   List<Integer> newPermutation = new ArrayList<>(oldPermutations);
+                   newPermutation.add(j, currentNumber);
+                   if (newPermutation.size() == nums.length) {
+                       result.add(newPermutation);
+                   } else {
+                       permutations.add(newPermutation);
+                   }
+               }
+           }
+       }   
 
-      if (nums == null || nums.length == 0) {
-         return results;
-      }
-
-      createPermutations(results, new ArrayList<Integer>(), nums);
-      return results;
-   }
-
-   private void createPermutations(List<List<Integer>> results, List<Integer> current, int[] nums) {
-      if (currentList.size() == nums.length) {
-         results.add(currentList);
-         return;
-      }
-
-      for (int i=0; i<nums.length; i++) {
-         if (!currentList.contains(nums[i])) {
-            currentList.add(nums[i]);
-            createPermutations(results, current, nums);
-            currentList.remove(currentList.size() - 1);
-         }
-      }
+       return result;
    }
 }
